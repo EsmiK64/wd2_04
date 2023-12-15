@@ -1,44 +1,106 @@
-import React from "react";
+import React, { useState } from "react";
 import ProductCard from "./ProductCard";
 import MultiRangeSlider from "./MultiRangeSlider";
-import { Accordion } from 'flowbite-react';
+import Cart from "./Cart";
+import { Accordion, Checkbox, Label, TextInput } from 'flowbite-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from "react-router-dom";
 
-const products = [
-  { id: 1, name: "Nůž dětský Opinel", price: 199 },
-  { id: 2, name: "Powerbanka 15000mAh", price: 599 },
-  { id: 3, name: "Varná konvice", price: 999 },
-  { id: 4, name: "Podsadový stan pro dva", price: 19999 },
-  { id: 5, name: "Krosna", price: 5599 },
-  { id: 6, name: "Karabinka", price: 49 },
-  { id: 7, name: "Spacák zimní", price: 1399 },
-  { id: 8, name: "Plynová kartuše malá", price: 399 },
-  { id: 9, name: "Stezka Země/Voda", price: 199 },
-  { id: 10, name: "Rádcovský zápisník 2.0", price: 399 },
-  { id: 11, name: "Taška plátěná Skaut", price: 159 },
-  { id: 12, name: "Batoh malý 30l", price: 1999 },
-  { id: 13, name: "Příbor skladný", price: 99 },
-  { id: 14, name: "Hrnek Skaut", price: 299 },
-  { id: 15, name: "Kroj skautský", price: 699 },
-];
+import Products from "../data/products.json";
+
+const products = Products;
 
 const Home = () => {
+  const [cartItems, setCartItems] = useState([]);
+
+  const handleAddToCart = product => {
+    const updatedCart = [...cartItems, product];
+    setCartItems(updatedCart);
+    // Store the cart in localStorage
+    window.localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
+  const handleRemoveFromCart = productId => {
+    const updatedCart = cartItems.filter(item => item.id !== productId);
+    setCartItems(updatedCart);
+    // Update localStorage when an item is removed
+    window.localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
   return (
     <div className="container mx-auto mt-0 mb-8 md:my-4 lg:my-8 p-5 flex items-center flex-col">
       <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-7xl dark:text-white">
-        <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
           EsmiK</span> Shop; The E-shop
       </h1>
+      <div className="flex mx-auto bg-white shadow-lg rounded-lg overflow-hidden p-5 w-full mb-5 justify-end flex-row items-center gap-5">
+        <TextInput id="search" type="text" placeholder="Hledej..." className="w-1/6" />
+        <div className="h-full">
+          <Link to={`/cart`}>
+            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" className="hover:stroke-blue-500" />
+          </Link>
+        </div>
+      </div>
       <div className="flex flex-col lg:flex-row w-full gap-4">
         <div className="w-1/4 mx-auto bg-white shadow-lg rounded-lg overflow-hidden flex-col p-5 hidden lg:flex md:w-1/6 lg:w-1/4">
-          <form className="flex flex-col items-center">
+          <form className="flex flex-col gap-3">
             <span className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Filtry</span>
+            <span className="filtry_nadpis">Cena</span>
             <MultiRangeSlider />
+            <span className="filtry_nadpis">Dostupnost</span>
+            <div className="flex items-center gap-2">
+              <Checkbox id="locally" />
+              <Label htmlFor="locally" className="flex">
+                Dostupné na prodejně
+              </Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox id="in-stock" />
+              <Label htmlFor="in-stock" className="flex">
+                Skladem
+              </Label>
+            </div>
+            <span className="filtry_nadpis">Typ produktu</span>
+            <div className="flex items-center gap-2">
+              <Checkbox id="skaut" />
+              <Label htmlFor="skaut" className="flex">
+                Skautské potřeby
+              </Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox id="outdoor" />
+              <Label htmlFor="outdoor" className="flex">
+                Outdoorové vybavení
+              </Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox id="stan" />
+              <Label htmlFor="stan" className="flex">
+                Stanování
+              </Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox id="jidlo" />
+              <Label htmlFor="jidlo" className="flex">
+                Jídlo
+              </Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox id="batohy" />
+              <Label htmlFor="batohy" className="flex">
+                Batohy
+              </Label>
+            </div>
+            <button className="bg-blue-500 text-white px-4 py-2 rounded w-1/2 mt-5">
+              Filtrovat
+            </button>
           </form>
         </div>
         <Accordion className="block lg:hidden">
           <Accordion.Panel>
             <Accordion.Title className="p-5">Filtrovat</Accordion.Title>
-            <Accordion.Content className="p-5">
+            <Accordion.Content className="p-5 flex flex-col items-center">
+              <span className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Filtry</span>
               <MultiRangeSlider />
             </Accordion.Content>
           </Accordion.Panel>
@@ -48,6 +110,9 @@ const Home = () => {
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
+      </div>
+      <div className="mt-8">
+        <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
       </div>
     </div>
   );

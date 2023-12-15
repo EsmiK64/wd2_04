@@ -1,29 +1,22 @@
 import React from "react";
-import { /*Link, */BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import ProductDetail from "./components/ProductDetail";
+import Cart from './components/Cart';
 
-//import { Navbar } from 'flowbite-react';
+// fontawesome stuff
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons';
+library.add(fas, faTwitter, faFontAwesome); 
 
 function App() {
   return (
     <Router className="bg-slate-200">
-      {
-        /*<Navbar fluid rounded className="mx-auto bg-white shadow-lg rounded-lg overflow-hidden m-5 p-5">
-          <Navbar.Toggle />
-          <Navbar.Collapse>
-            <Navbar.Link href="#" active>
-              Domů
-            </Navbar.Link>
-            <Navbar.Link as={Link} href="#">
-              Kontakt
-            </Navbar.Link>
-          </Navbar.Collapse>
-        </Navbar>*/
-      }
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </Router>
   );

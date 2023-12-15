@@ -1,0 +1,93 @@
+[
+    {
+        "id": 1,
+        "name": "Nůž dětský Opinel",
+        "price": 199,
+        "category": "outdoor"
+    },
+    {
+        "id": 2,
+        "name": "Powerbanka 15000mAh",
+        "price": 599,
+        "category": "outdoor"
+    },
+    {
+        "id": 3,
+        "name": "Varná konvice",
+        "price": 999,
+        "category": "jidlo"
+    },
+    {
+        "id": 4,
+        "name": "Podsadový stan pro dva",
+        "price": 19999,
+        "category": "stan"
+    },
+    {
+        "id": 5,
+        "name": "Krosna",
+        "price": 5599,
+        "category": "batohy"
+    },
+    {
+        "id": 6,
+        "name": "Karabinka",
+        "price": 49,
+        "category": "outdoor"
+    },
+    {
+        "id": 7,
+        "name": "Spacák zimní",
+        "price": 1399,
+        "category": "stan"
+    },
+    {
+        "id": 8,
+        "name": "Plynová kartuše malá",
+        "price": 399,
+        "category": "jidlo"
+    },
+    {
+        "id": 9,
+        "name": "Stezka Země/Voda",
+        "price": 199,
+        "category": "skaut"
+    },
+    {
+        "id": 10,
+        "name": "Rádcovský zápisník 2.0",
+        "price": 399,
+        "category": "skaut"
+    },
+    {
+        "id": 11,
+        "name": "Taška plátěná Skaut",
+        "price": 159,
+        "category": "skaut"
+    },
+    {
+        "id": 12,
+        "name": "Batoh malý 30l",
+        "price": 1999,
+        "category": "batohy"
+    },
+    {
+        "id": 13,
+        "name": "Příbor skladný",
+        "price": 99,
+        "category": "jidlo"
+    },
+    {
+        "id": 14,
+        "name": "Hrnek Skaut",
+        "price": 299,
+        "category": "jidlo"
+    },
+    {
+        "id": 15,
+        "name": "Kroj skautský",
+        "price": 699,
+        "category": "skaut"
+    }
+]
+  

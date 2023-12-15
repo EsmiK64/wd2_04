@@ -9,7 +9,7 @@ const MultiRangeSlider = () => {
     setRange(newRange);
   };
 
-  const handleInputChange = (index, value) => { 
+  const handleInputChange = (index, value) => {
     const newRange = [...range];
     newRange[index] = value;
     setRange(newRange);
