@@ -88,6 +88,12 @@
         "name": "Kroj skautský",
         "price": 699,
         "category": "skaut"
+    },
+    {
+        "id": 16,
+        "name": "Růžový jednorožec",
+        "price": 299,
+        "category": "stan"
     }
 ]
   
