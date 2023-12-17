@@ -9,7 +9,7 @@ const root = createRoot(domNode);
 
 root.render(
   <React.StrictMode>
-    <App />
+      <App />
   </React.StrictMode>
 );
 

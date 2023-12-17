@@ -21,7 +21,16 @@
         "id": 4,
         "name": "Podsadový stan pro dva",
         "price": 19999,
-        "category": "stan"
+        "category": "stan",
+        "short_description": "Obsahuje podsadu, celtu, podpěrné tyče, příčná prkna a postele.",
+        "long_description": "Podsadové stany jsou léty osvědčené stany pro letní táboření. Jejich historie sahá až do roku 1913 – v té době čeští skauti vynalezli tento typ stanů. Podsadové stany se zrodily jako zlepšovák – po několika letních táborech, kdy skauti spali na zemi pod dvěma celtami sepnutými do jehlanu padl nápad umístit pod plachtu podstavec = podsadu. Díky tomu bylo možné spát ve stanu na postelích ve výšce nad zemí a zároveň se ve stanu i postavit. V průběhu let došlo ke změně plachty, která byla na podsadě připevněna. 2 sepnuté celty byly nahrazeny plachtou, která připomíná klasický stan „Áčko“ – pro tuto plachtu se vžil název Osada.",
+        "parameters": {
+            "Délka": "2m",
+            "Šířka": "2m",
+            "Výška": "2,5m",
+            "Materiál": "Dřevo",
+            "Materiál tyčí": "Železo"
+        }
     },
     {
         "id": 5,
@@ -88,12 +97,5 @@
         "name": "Kroj skautský",
         "price": 699,
         "category": "skaut"
-    },
-    {
-        "id": 16,
-        "name": "Růžový jednorožec",
-        "price": 299,
-        "category": "stan"
     }
 ]
-  
