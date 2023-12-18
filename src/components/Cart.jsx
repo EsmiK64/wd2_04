@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Breadcrumb, TextInput } from 'flowbite-react';
+import { Button, Breadcrumb, TextInput, Table } from 'flowbite-react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { HiHome } from "react-icons/hi";
@@ -10,12 +10,13 @@ const Cart = () => {
   const handleRemoveFromCart = (productId) => {
     const updatedCart = cartItems.filter((item) => item.id !== productId);
     setCartItems(updatedCart);
-    window.localStorage.setItem("cart", JSON.stringify(updatedCart));
+    sessionStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   useEffect(() => {
-    const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCartItems(currentCart);
+    const currentCart = JSON.parse(sessionStorage.getItem("cart")) || [];
+    const filteredCart = [...new Set(currentCart)]
+    setCartItems(filteredCart);
   }, []);
 
   return (
@@ -64,7 +65,7 @@ const Cart = () => {
                   <span>{item.price} Kč</span>
                 </div>
                 <Button onClick={() => handleRemoveFromCart(item.id)}>
-                  Remove
+                  Removex;
                 </Button>
               </li>
             ))}

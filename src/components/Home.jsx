@@ -17,11 +17,11 @@ const Home = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const handleAddToCart = (product) => {
-    setCartItems(JSON.parse(window.localStorage.getItem("cart")))
-    const updatedCart = [...cartItems, product];
+    const currentCart = JSON.parse(sessionStorage.getItem("cart"));
+    const updatedCart = [...currentCart, product];
     setCartItems(updatedCart);
     console.log(updatedCart);
-    window.localStorage.setItem("cart", JSON.stringify(updatedCart));
+    sessionStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   return (

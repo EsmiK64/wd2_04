@@ -6,14 +6,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { HiHome } from "react-icons/hi";
 
+// Lightbox imports
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
+const images = require.context('../../public/images', true);
+
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [cartItems, setCartItems] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [slides, setSlides] = useState([]);
 
   useEffect(() => {
     setCartItems(JSON.parse(window.localStorage.getItem("cart")));
-    console.log(cartItems);
+
     const productId = parseInt(id, 10);
 
     const selectedProduct = productsData.find((prod) => prod.id === productId);
@@ -24,6 +32,10 @@ const ProductDetail = () => {
       console.error(`Product with ID ${productId} not found.`);
     }
 
+    const imageList = images.keys().map(image => images(image));
+    
+    setSlides([...imageList])
+    console.log(slides)
   }, [id]);
 
   if (!product) {
@@ -31,11 +43,10 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = (product) => {
-    setCartItems(JSON.parse(window.localStorage.getItem("cart")));
+    setCartItems(JSON.parse(sessionStorage.getItem("cart")));
     const updatedCart = [...cartItems, product];
     setCartItems(updatedCart);
-    console.log(updatedCart);
-    window.localStorage.setItem("cart", JSON.stringify(updatedCart));
+    sessionStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   if (!product.parameters) {
@@ -66,13 +77,24 @@ const ProductDetail = () => {
           <span className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
             {product.name}
           </span>
+
+          <Lightbox
+            open={open}
+            close={() => setOpen(false)}
+            slides={slides}
+          />
           <div className="flex flex-row items-center gap-5 w-full">
             <div className="flex w-1/2 justify-end">
+
+
               <img
-                className="object-cover object-center h-64"
+                className="object-cover object-center h-64 cursor-pointer"
                 src={`../images/product${product.id}.jpg`}
                 alt={product.name}
+                onClick={() => setOpen(true)}
               />
+
+
             </div>
             <div className="flex flex-col justify-end w-1/2">
               <p className="text-5xl font-bold justify-self-start">
