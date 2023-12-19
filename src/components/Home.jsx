@@ -17,11 +17,14 @@ const Home = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const handleAddToCart = (product) => {
-    const currentCart = JSON.parse(sessionStorage.getItem("cart"));
-    const updatedCart = [...currentCart, product];
-    setCartItems(updatedCart);
-    console.log(updatedCart);
-    sessionStorage.setItem("cart", JSON.stringify(updatedCart));
+    setCartItems(JSON.parse(sessionStorage.getItem("cart")));
+    if(cartItems === null){
+      setCartItems([product.id]);
+    } else {
+      cartItems.push(product.id)
+    }
+    console.log(cartItems);
+    sessionStorage.setItem("cart", JSON.stringify(cartItems));
   };
 
   return (
