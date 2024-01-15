@@ -14,17 +14,16 @@ import Filters from "./Filters";
 const products = Products;
 
 const Home = () => {
-  const [cartItems, setCartItems] = useState([]);
-
   const handleAddToCart = (product) => {
-    setCartItems(JSON.parse(sessionStorage.getItem("cart")));
-    if(cartItems === null){
-      setCartItems([product.id]);
+    console.log(localStorage.cart)
+    if (localStorage.cart) {
+      const items = JSON.parse(localStorage.getItem("cart"));
+      console.log(items)
+      items.push(product);
+      localStorage.setItem("cart", JSON.stringify(items));
     } else {
-      cartItems.push(product.id)
+      localStorage.setItem("cart", JSON.stringify([product]));
     }
-    console.log(cartItems);
-    sessionStorage.setItem("cart", JSON.stringify(cartItems));
   };
 
   return (

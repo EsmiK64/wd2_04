@@ -10,11 +10,11 @@ const Cart = () => {
   const handleRemoveFromCart = (productId) => {
     const updatedCart = cartItems.filter((item) => item.id !== productId);
     setCartItems(updatedCart);
-    sessionStorage.setItem("cart", JSON.stringify(updatedCart));
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   useEffect(() => {
-    const currentCart = JSON.parse(sessionStorage.getItem("cart")) || [];
+    const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
     const filteredCart = [...new Set(currentCart)]
     setCartItems(filteredCart);
   }, []);
@@ -65,7 +65,7 @@ const Cart = () => {
                   <span>{item.price} Kč</span>
                 </div>
                 <Button onClick={() => handleRemoveFromCart(item.id)}>
-                  Removex;
+                  Remove
                 </Button>
               </li>
             ))}
