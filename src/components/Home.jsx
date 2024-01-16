@@ -18,9 +18,11 @@ const Home = () => {
     console.log(localStorage.cart)
     if (localStorage.cart) {
       const items = JSON.parse(localStorage.getItem("cart"));
-      console.log(items)
-      items.push(product);
-      localStorage.setItem("cart", JSON.stringify(items));
+
+      if (!items.some(item => item.id === product.id)) {
+        items.push(product);
+        localStorage.setItem("cart", JSON.stringify(items));
+      }
     } else {
       localStorage.setItem("cart", JSON.stringify([product]));
     }
