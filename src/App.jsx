@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import Home from "./components/Home";
 import ProductDetail from "./components/ProductDetail";
 import Cart from "./components/Cart";
@@ -24,6 +25,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
+          {/*<Route path="/order-info" element={<OrderInfoPage setOrderInfo={setOrderInfo} />} />
+          <Route path="/delivery" element={<DeliveryOptionsPage setDeliveryOption={setDeliveryOption} />} />
+          <Route path="/payment" element={<PaymentPage setPaymentInfo={setPaymentInfo} />} />
+          <Route path="/thank-you" element={<ThankYouPage />} /> */}
         </Routes>
       </div>
     </Router>
