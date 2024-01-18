@@ -10,7 +10,7 @@ import { HiHome } from "react-icons/hi";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
-const images = require.context('../../public/images', true);
+//const images = require.context('../../public/images', true);
 
 const ProductDetail = () => {
   const { id } = useParams();

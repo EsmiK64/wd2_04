@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
-import { Tabs, Breadcrumb, TextInput, Button, TabsRef } from 'flowbite-react';
+import { Tabs, Breadcrumb, TextInput, Button } from 'flowbite-react';
+//import { TabsRef } from "flowbite-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { HiHome } from "react-icons/hi";
@@ -15,7 +16,7 @@ const Cart = () => {
   const [orderInfo, setOrderInfo] = useState({});
   const [deliveryOption, setDeliveryOption] = useState("");
   const [paymentInfo, setPaymentInfo] = useState({});
-  const tabsRef = useRef<TabsRef>(null);
+  //const tabsRef = useRef<TabsRef>(null);
   const [activeTab, setActiveTab] = useState(0);
 
   return (
@@ -47,19 +48,19 @@ const Cart = () => {
       <Tabs aria-label="Cart navigation" style="fullWidth" className="w-full">
         <Tabs.Item active title="Košík" icon={FaCartShopping}>
           <CartItems />
-          <Button onClick={() => tabsRef.current?.setActiveTab(0)}>Objednat</Button>
+          {/*<Button onClick={() => tabsRef.current?.setActiveTab(0)}>Objednat</Button>*/}
         </Tabs.Item>
         <Tabs.Item title="Info o objednávce" icon={FaCircleInfo}>
           <OrderInfoPage />
-          <Button onClick={() => tabsRef.current?.setActiveTab(1)}>Pokračovat</Button>
+          {/*<Button onClick={() => tabsRef.current?.setActiveTab(1)}>Pokračovat</Button>*/}
         </Tabs.Item>
         <Tabs.Item title="Doprava" icon={FaTruck}>
           <DeliveryOptionsPage />
-          <Button onClick={() => tabsRef.current?.setActiveTab(2)}>Pokračovat</Button>
+          {/*<Button onClick={() => tabsRef.current?.setActiveTab(2)}>Pokračovat</Button>*/}
         </Tabs.Item>
         <Tabs.Item title="Platba" icon={FaMoneyBill1Wave}>
           <PaymentPage />
-          <Button onClick={() => tabsRef.current?.setActiveTab(3)}>Dokončit</Button>
+          {/*<Button onClick={() => tabsRef.current?.setActiveTab(3)}>Dokončit</Button>*/}
         </Tabs.Item>
         <Tabs.Item title="Dokončení" icon={FaClipboardCheck}>
           <ThankYouPage />
