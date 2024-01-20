@@ -27,7 +27,7 @@ const CartItems = () => {
 
     const calculateTotalPrice = () => {
         return cartItems.reduce((total, item) => {
-            return total + item.price * item.amount;
+            return total + item.price * (item.amount || 1);
         }, 0);
     };
 
@@ -59,7 +59,6 @@ const CartItems = () => {
                                     </Table.Cell>
                                     <Table.Cell>{item.name}</Table.Cell>
                                     <Table.Cell>
-                                        {/*<label htmlFor={`amount-${item.id}`}>Množství: </label>*/}
                                         <input
                                             id={`amount-${item.id}`}
                                             className="rounded-md w-12"
@@ -81,7 +80,7 @@ const CartItems = () => {
                         </Table.Body>
                     </Table>
                     <div className="mt-4">
-                        <p>Total Price: {calculateTotalPrice()} Kč</p>
+                        <p>Cena: {calculateTotalPrice()} Kč</p>
                     </div>
                 </div>
             )}
