@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { HiHome } from "react-icons/hi";
 import { FaCartShopping, FaCircleInfo, FaTruck, FaMoneyBill1Wave, FaClipboardCheck } from "react-icons/fa6";
 
+import Orders from "../data/orders.json";
+
 import OrderInfoPage from "./Cart/OrderInfoPage";
 import DeliveryOptionsPage from "./Cart/DeliveryOptionsPage";
 import PaymentPage from "./Cart/PaymentPage";
@@ -18,6 +20,11 @@ const Cart = () => {
   const [paymentInfo, setPaymentInfo] = useState({});
   //const tabsRef = useRef<TabsRef>(null);
   const [activeTab, setActiveTab] = useState(0);
+
+  const sendOrder = () => {
+    const order = {orderInfo, deliveryOption, paymentInfo, CartItems}
+    Orders.push(JSON.stringify(order))
+  }
 
   return (
     <div className="w-5/6 flex flex-col items-center">
@@ -51,21 +58,21 @@ const Cart = () => {
           {/*<Button onClick={() => tabsRef.current?.setActiveTab(0)}>Objednat</Button>*/}
         </Tabs.Item>
         <Tabs.Item title="Info o objednávce" icon={FaCircleInfo}>
-          <OrderInfoPage />
+          <OrderInfoPage setOrderInfo={setOrderInfo} />
           {/*<Button onClick={() => tabsRef.current?.setActiveTab(1)}>Pokračovat</Button>*/}
         </Tabs.Item>
         <Tabs.Item title="Doprava" icon={FaTruck}>
-          <DeliveryOptionsPage />
+          <DeliveryOptionsPage setDeliveryOption={setDeliveryOption} />
           {/*<Button onClick={() => tabsRef.current?.setActiveTab(2)}>Pokračovat</Button>*/}
         </Tabs.Item>
         <Tabs.Item title="Platba" icon={FaMoneyBill1Wave}>
-          <PaymentPage />
-          {/*<Button onClick={() => tabsRef.current?.setActiveTab(3)}>Dokončit</Button>*/}
+          <PaymentPage setPaymentInfo={setPaymentInfo} />
+          <Button onClick={sendOrder}>Dokončit</Button>
         </Tabs.Item>
-        <Tabs.Item title="Dokončení" icon={FaClipboardCheck}>
+        {/*<Tabs.Item title="Dokončení" icon={FaClipboardCheck}>
           <ThankYouPage />
           <Button href="/">Zpět do obchodu</Button>
-        </Tabs.Item>
+        </Tabs.Item>*/}
       </Tabs>
 
     </div>

@@ -31,10 +31,6 @@ const CartItems = () => {
         }, 0);
     };
 
-    /*     const handleCheckout = () => {
-            navigate("/order-info");
-          }; */
-
     return (
         <div className="w-full">
             {!cartItems || cartItems.length === 0 ? (
