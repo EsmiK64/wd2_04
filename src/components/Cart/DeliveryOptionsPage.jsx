@@ -10,18 +10,19 @@ import {
   FaShop,
 } from "react-icons/fa6";
 
-const DeliveryOptionsPage = ({ setDeliveryOption }) => {
+const DeliveryOptionsPage = ({ setDeliveryOption}) => {
   const [selectedOption, setSelectedOption] = useState("mail");
 
   function onValueChange(event) {
     setSelectedOption(event.target.value);
     setDeliveryOption(selectedOption);
+
   }
 
   return (
     <div>
       <form className="flex w-full flex-col items-center" id="form" onChange={onValueChange}>
-        <h3 className="mb-4 filtry_nadpis">Vyberte způsob doručení</h3>x
+        <h3 className="mb-4 filtry_nadpis">Vyberte způsob doručení</h3>
         <div className="w-full md:w-2/3 lg:w-1/2">
           <div className="flex items-center gap-2 bg-slate-100 m-0 p-5 border rounded-t-md">
             <FaEnvelope />

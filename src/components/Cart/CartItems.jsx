@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table, Card } from "flowbite-react";
+import shippingOptions from "../../data/shippingOptions.json";
 
 const CartItems = ({ totalPrice }) => {
   const [cartItems, setCartItems] = useState([]);

@@ -13,7 +13,7 @@ import {
   FaArrowRight
 } from "react-icons/fa6";
 
-import Orders from "../data/orders.json";
+//import shippingOptions from "../../data/shippingOptions.json";
 
 import OrderInfoPage from "./Cart/OrderInfoPage.jsx";
 import DeliveryOptionsPage from "./Cart/DeliveryOptionsPage.jsx";
@@ -72,7 +72,7 @@ const Cart = () => {
       <span className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
         Košík
       </span>
-      <Tabs aria-label="Cart navigation" style="fullWidth" className="w-full" ref={tabsRef} onActiveTabChange={(tab) => setActiveTab(tab)}>
+      <Tabs aria-label="Cart navigation" style="fullWidth" className="w-full mb-7" ref={tabsRef} onActiveTabChange={(tab) => setActiveTab(tab)}>
         <Tabs.Item active title={!isMobile && "Košík"} icon={FaCartShopping}>
           <CartItems totalPrice={setPrice} />
         </Tabs.Item>
@@ -90,8 +90,7 @@ const Cart = () => {
           <Button href="/">Zpět do obchodu</Button>
         </Tabs.Item>*/}
       </Tabs>
-      <Button onClick={sendOrder}>test</Button>
-      <div className="w-full fixed flex bottom-0 bg-slate-200 p-5 border justify-between">
+      <div className="w-full fixed flex bottom-0 bg-slate-200 p-4 border justify-between items-center">
         {activeTab == 3 &&
           <Button
             onClick={() => tabsRef.current?.setActiveTab(activeTab + 1)}

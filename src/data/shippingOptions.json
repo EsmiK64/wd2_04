@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "mail",
+        "display": "Doručení na poštu",
+        "price": 29
+    },
+    {
+        "id": 2,
+        "name": "address",
+        "display": "Doručení na adresu",
+        "price": 59
+    },
+    {
+        "id": 3,
+        "name": "dpd",
+        "display": "DPD na adresu",
+        "price": 59
+    },
+    {
+        "id": 4,
+        "name": "ppl",
+        "display": "PPL na adresu",
+        "price": 59
+    },
+    {
+        "id": 5,
+        "name": "dhl",
+        "display": "DHL Express letecky",
+        "price": 599
+    },
+    {
+        "id": 6,
+        "name": "prodejna",
+        "display": "Odběr na prodejně",
+        "price": 0
+    }
+]
