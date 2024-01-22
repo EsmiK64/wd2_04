@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useRef, useEffect } from "react";
 import { Tabs, Breadcrumb, TextInput, Button } from "flowbite-react";
 import { TabsRef } from "flowbite-react/lib/esm/components/Tabs/Tabs";
@@ -8,6 +10,7 @@ import {
   FaCircleInfo,
   FaTruck,
   FaMoneyBill1Wave,
+  FaArrowRight
 } from "react-icons/fa6";
 
 import Orders from "../data/orders.json";
@@ -25,6 +28,7 @@ const Cart = () => {
   const tabsRef = useRef<TabsRef>(null);
   const [activeTab, setActiveTab] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [price, setPrice] = useState("");
 
   useEffect(() => {
     const mobileMediaQuery = window.matchMedia("(max-width: 767px)"); // Adjust the breakpoint as needed
@@ -42,7 +46,8 @@ const Cart = () => {
   }, []);
 
   const sendOrder = () => {
-    const order = { orderInfo, deliveryOption, paymentInfo, CartItems };
+    const cartItems = JSON.parse(localStorage.getItem("cart") || '{}');
+    const order = { cartItems, orderInfo, deliveryOption, paymentInfo };
     console.log(order);
   };
 
@@ -67,34 +72,45 @@ const Cart = () => {
       <span className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
         Košík
       </span>
-      <Tabs aria-label="Cart navigation" style="fullWidth" className="w-full">
+      <Tabs aria-label="Cart navigation" style="fullWidth" className="w-full" ref={tabsRef} onActiveTabChange={(tab) => setActiveTab(tab)}>
         <Tabs.Item active title={!isMobile && "Košík"} icon={FaCartShopping}>
-          <CartItems />
-          {/*<Button onClick={() => tabsRef.current?.setActiveTab(1)}>
-            Objednat
-          </Button>*/}
+          <CartItems totalPrice={setPrice} />
         </Tabs.Item>
         <Tabs.Item title={!isMobile && "Info o objednávce"} icon={FaCircleInfo}>
           <OrderInfoPage setOrderInfo={setOrderInfo} />
-          {/*<Button onClick={() => tabsRef.current?.setActiveTab(2)}>
-            Pokračovat
-          </Button>*/}
         </Tabs.Item>
         <Tabs.Item title={!isMobile && "Doprava"} icon={FaTruck}>
           <DeliveryOptionsPage setDeliveryOption={setDeliveryOption} />
-          {/*<Button onClick={() => tabsRef.current?.setActiveTab(3)}>
-            Pokračovat
-          </Button>*/}
         </Tabs.Item>
         <Tabs.Item title={!isMobile && "Platba"} icon={FaMoneyBill1Wave}>
           <PaymentPage setPaymentOption={setPaymentInfo} />
-          <Button onClick={sendOrder}>Dokončit</Button>
         </Tabs.Item>
         {/*<Tabs.Item title="Dokončení" icon={FaClipboardCheck}>
           <ThankYouPage />
           <Button href="/">Zpět do obchodu</Button>
         </Tabs.Item>*/}
       </Tabs>
+      <Button onClick={sendOrder}>test</Button>
+      <div className="w-full fixed flex bottom-0 bg-slate-200 p-5 border justify-between">
+        {activeTab == 3 &&
+          <Button
+            onClick={() => tabsRef.current?.setActiveTab(activeTab + 1)}
+            color="success">
+            Pokračovat v objednávce
+            <FaArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+        }
+        {activeTab !== 3 &&
+          <Button
+            onClick={sendOrder}
+            color="success">
+            Dokončit objednávku
+            <FaArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+        }
+
+        <p className="text-xl font-bold">Celková cena: {price} Kč</p>
+      </div>
     </div>
   );
 };

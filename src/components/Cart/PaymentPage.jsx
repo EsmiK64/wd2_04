@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextInput, Button } from "flowbite-react";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
@@ -13,6 +13,9 @@ const PaymentPage = ({ setPaymentOption }) => {
     number: "",
   });
 
+  useEffect(() => {
+    setPaymentOption(paymentInfo);
+  }, [paymentInfo])
   const handleInputFocus = (e) => {
     setPaymentInfo({ ...paymentInfo, focus: e.target.name });
   };

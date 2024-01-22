@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextInput, Button } from "flowbite-react";
 import { HiMail } from "react-icons/hi";
 
@@ -14,6 +14,21 @@ const OrderInfoPage = ({ setOrderInfo }) => {
   const [city, setCity] = useState("");
   const [psc, setPsc] = useState("");
   const [country, setCountry] = useState("");
+
+  useEffect(() => {
+    const orderInfo = {
+      "name": name,
+      "surname": surname,
+      "address": address,
+      "email": email,
+      "phone": phone,
+      "city": city,
+      "psc": psc,
+      "country": country
+    }
+
+    setOrderInfo(orderInfo);
+  }, [name, surname, address, email, phone, city, psc, country])
 
   return (
     <div className="w-full flex flex-col gap-5 items-center">
