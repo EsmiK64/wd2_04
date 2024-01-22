@@ -6,7 +6,7 @@ module.exports = {
     safeList: [],
     content: [
       './index.html',
-      './src/**/*.{vue,js,ts}',
+      './src/**/*.{js,ts,jsx}',
       "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}"
     ],
   },
