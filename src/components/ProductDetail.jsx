@@ -17,7 +17,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   const [open, setOpen] = useState(false);
-  const [slides, setSlides] = useState([]);
+  //const [slides, setSlides] = useState([]);
 
   useEffect(() => {
     setCartItems(JSON.parse(window.localStorage.getItem("cart")));
@@ -32,10 +32,10 @@ const ProductDetail = () => {
       console.error(`Product with ID ${productId} not found.`);
     }
 
-    const imageList = images.keys().map(image => images(image));
-    
-    setSlides([...imageList])
-    console.log(slides)
+    //const imageList = images.keys().map(image => images(image));
+
+    //setSlides([...imageList])
+    //console.log(slides)
   }, [id]);
 
   if (!product) {
@@ -78,11 +78,11 @@ const ProductDetail = () => {
             {product.name}
           </span>
 
-          <Lightbox
+          {/*<Lightbox
             open={open}
             close={() => setOpen(false)}
             slides={slides}
-          />
+    />*/}
           <div className="flex flex-row items-center gap-5 w-full">
             <div className="flex w-1/2 justify-end">
 

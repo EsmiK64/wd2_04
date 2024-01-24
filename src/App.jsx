@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import ProductDetail from "./components/ProductDetail";
 import Cart from "./components/Cart";
+import OrderSent from "./components/OrderSent";
 
 import { Toast } from "flowbite-react";
 
@@ -43,6 +44,7 @@ function App() {
           <Route path="/" element={<Home setIsPopupOpen={setIsPopupOpen} />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/order-sent" element={<OrderSent />} />
         </Routes>
       </div>
     </Router>
