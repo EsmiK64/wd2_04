@@ -34,11 +34,14 @@ function App() {
             </Toast>
           </div>
         )}
-        <h1 className="m-5 md:m-0 md:mb-4 text-5xl font-extrabold leading-none tracking-tight text-gray-900 md:text-6xl lg:text-7xl dark:text-white">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
-            EsmiK&nbsp;
-          </span>
-          Shop; <wbr />The E-shop
+        <h1 className="m-5 flex flex-col items-center md:flex-row gap-6 md:m-0 md:mb-4 text-5xl font-extrabold leading-none tracking-tight text-gray-900 md:text-6xl lg:text-7xl dark:text-white">
+          <div>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+              EsmiK
+            </span>
+            &nbsp; Shop;
+          </div>
+          <span>The&nbsp;E-shop</span>
         </h1>
         <Routes>
           <Route path="/" element={<Home setIsPopupOpen={setIsPopupOpen} />} />

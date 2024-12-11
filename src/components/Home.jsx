@@ -57,7 +57,7 @@ const Home = ({ setIsPopupOpen }) => {
             </Accordion.Content>
           </Accordion.Panel>
         </Accordion>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 w-full md:w-5/6 lg:w-3/4">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 w-full md:w-5/6 lg:w-3/4 h-fit">
           {products.map((product) => (
             <ProductCard
               key={product.id}
